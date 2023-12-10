@@ -1,0 +1,75 @@
+﻿@model Usuario
+﻿﻿@{
+	Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+<link rel="stylesheet" href="sweetalert2.min.css">
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form asp-controller="Inicio" asp-action="Registrarse" method="post">
+			<h1>Crea una cuenta</h1>
+			<input type="text" placeholder="Nombre" asp-for="Nombre" />
+			<input type="text" placeholder="Apellidos" asp-for="Apellidos" />
+			<input type="email" placeholder="Email" required asp-for="Correo" />
+			<input type="password" placeholder="Contraseña" required asp-for="Contrasenia" />
+			<button type ="submit">Registrarme</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+			<h1>Inicia Sesión</h1>
+			<input type="hidden" name="IdUser" value="@ViewBag.IdUsuario" />
+			<input type="email" placeholder="Email" required name="Correo" />
+			<input type="password" placeholder="Password" required name="Contrasenia"  />
+			<a href="#">Olvidaste tu contraseña?</a>
+			<button type="submit">Entrar</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Bienvenido</h1>
+				<p>Para usar el administrador de GlissVinyls ingresa tus datos</p>
+				<button class="ghost" id="signIn">Iniciar Sesión</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, ViniLover!</h1>
+				<p>Registra tu usuario aquí</p>
+				<button class="ghost" id="signUp">Registrarme</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		// Try to get the message from TempData
+		var mensaje = '@(TempData["Mensaje"] ?? string.Empty)';
+
+		// Check if there is a message and show SweetAlert
+		if (mensaje !== '') {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: mensaje,
+			});
+		}
+	});
+</script>
+
+<script src="js/login.js" asp-append-version="true"></script>
+
+
+@*
+<section id="general" class="contact">
+	<div class="container">
+		<div class="section-title">
+			<h2>Editar Usuario</h2>
+			<p>Administra los atributos del usuario</p>
+
+		</div>
+	</div>
+</section>
+*@

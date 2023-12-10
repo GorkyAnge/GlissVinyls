@@ -1,0 +1,63 @@
+﻿@model List<Producto>
+@{
+    ViewData["Title"] = "Lista de Productos";
+    Layout = "_LayoutAdmin";
+}
+
+<section id="general" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Lista de Productos</h2>
+            <p>Edita nuestra colección de productos.</p>
+            <button type="button" class="btn btn-warning" style="color: white;" onclick="location.href='@Url.Action("Create","Producto")'">Añadir Nuevo Producto</button>
+        </div>
+
+        
+
+        <div class="row">
+
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#ID</th hidden>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdProducto</td>
+                                <td>@item.Nombre</td>
+                                <td>@item.Descripcion</td>
+                                <td>@item.Stock</td>
+                                <td>@item.Precio</td>
+                                <td>@item.Imagen</td>
+                                <td>
+                                    @* <a asp-action="Details" asp-route-Id="@item.IdProducto" class="btn btn-primary">
+                                        <i class="fas fa-eye"> Ver</i>
+                                    </a> *@
+                                    <a type="button" asp-action="Edit" asp-route-Id="@item.IdProducto" class="btn btn-warning" style="color: white;">
+                                        <i class="fa-solid fa-pen"> Editar</i>
+                                    </a>
+                                    <a type="button" asp-action="Delete" asp-route-Id="@item.IdProducto" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"> Borrar</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>

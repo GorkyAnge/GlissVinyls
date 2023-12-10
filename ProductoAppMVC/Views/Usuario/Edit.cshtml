@@ -1,0 +1,52 @@
+﻿@model Usuario
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+      Layout = "_LayoutAdmin";
+}
+
+<section id="general" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Editar Usuario</h2>
+            <p>Administra los atributos del usuario</p>
+            
+        </div>
+        <form method="post">
+
+
+            <input asp-for="IdUsuario" class="form-control" hidden>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellidos</label>
+                <input asp-for="Apellidos" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input asp-for="Correo" class="form-control">
+            </div>
+            <div class="mb-3" >
+                <input type="password" asp-for="Contrasenia" class="form-control"hidden>
+            </div> 
+            <div class="mb-3">
+                <label class="form-label">Rol</label>
+                <select asp-for="Rol" class="form-select">
+                    <option value="usuario">Usuario</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <div class="row col-6">
+                <div class="col-6 col-md-6">
+                    <button asp-action="Edit" type="submit" class="btn btn-warning" style="color: white;">Editar</button>
+                </div>
+                <div class="col-6">
+                    <a asp-action="Index" type="submit" class="btn btn-outline-warning">Regresar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

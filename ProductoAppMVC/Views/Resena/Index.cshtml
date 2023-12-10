@@ -1,0 +1,45 @@
+﻿@model List<Resena>
+@{
+    ViewData["Title"] = "Reseñas de este Vinilo";
+    Layout = "_LayoutUsuario"; // Especifica el layout personalizado para esta vista
+}
+<section id="general" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Reseñas</h2>
+            <p style="margin-bottom: 20px;">En esta página se muestran los comentarios de los usuarios acerca del vinilo.</p>
+            @ViewBag.IdProducto
+            @ViewBag.IdUsuario
+            @ViewBag.Nombre
+            <a asp-action="Create" asp-route-Id="@ViewBag.IdProducto" asp-route-UserId="@ViewBag.IdUsuario" asp-route-UserName="@ViewBag.Nombre" asp-controller="Resena" class="btn btn-warning" style="color: white;">Agregar Reseña</a>
+            <a asp-action="Index" asp-controller="Tienda" type="submit" class="btn btn-outline-warning">Regresar</a>
+        </div>
+        
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Reseña</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Usuario</td>
+                        <td>@item.Texto</td>
+                        @* <td>
+                    <a asp-action="Comment" asp-controller="Resena" asp-route-Id="@item.IdResena" class="btn btn-primary">
+                    <i class="fas fa-eye" style="color: #ffffff;"> Ver Comentario</i>
+                    </a>
+                    </td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+        
+    </div>
+
+</section>

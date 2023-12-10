@@ -1,0 +1,79 @@
+﻿@model List<Producto>
+@{
+    ViewData["Title"] = "Tienda Vinilos";
+    Layout = "_LayoutAdmin";
+}
+
+<section id="services" class="services">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Servicios Administrador</h2>
+            <p>Administra las tablas de Gliss Vinyls.</p>
+        </div>
+
+        <div class="row" >
+
+            <div class="col-lg-12 d-flex justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="icon">
+                        <i class="bx bxs-disc"></i>
+                    </div>
+                    <h4><a href="@Url.Action("Index", "Producto")">Productos</a></h4>
+                    <p>Administrar los Productos</p>
+                </div>
+
+                <div class="icon-box iconbox-orange ">
+                    <div class="icon">
+                        <i class="bx bxs-user-detail"></i>
+                    </div>
+                    <h4><a href="@Url.Action("Index", "Usuario")">Usuarios</a></h4>
+                    <p>Administrar los Usuarios</p>
+                </div>
+
+            </div>
+@* 
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon-box iconbox-pink">
+                    <div class="icon">
+                        <i class="bx bx-tachometer"></i>
+                    </div>
+                    <h4><a href="">Reseñas</a></h4>
+                    <p>Administrar Reseñas</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-yellow">
+                    <div class="icon">
+                        <i class="bx bx-layer"></i>
+                    </div>
+                    <h4><a href="">Carritos</a></h4>
+                    <p>Administrar carritos</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon-box iconbox-red">
+                    <div class="icon">
+                        <i class="bx bx-slideshow"></i>
+                    </div>
+                    <h4><a href="">Dele Cardo</a></h4>
+                    <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon-box iconbox-teal">
+                    <div class="icon">
+                        <i class="bx bx-arch"></i>
+                    </div>
+                    <h4><a href="">Divera Don</a></h4>
+                    <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                </div>
+            </div>
+ *@
+        </div>
+
+    </div>
+</section><!-- End Services Section -->

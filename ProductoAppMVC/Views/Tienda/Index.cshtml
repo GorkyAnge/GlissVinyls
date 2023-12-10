@@ -1,0 +1,47 @@
+﻿@model List<Producto>
+@{
+    ViewData["Title"] = "Tienda Vinilos";
+    Layout = "_LayoutUsuario";
+}
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Tienda de Vinilos</h2>
+            
+            <p>Hola, @ViewBag.Nombre</p>
+            <p>Explora nuestra selección de vinilos.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-flters">
+                    <!-- Puedes personalizar las categorías según tus necesidades -->
+                    <li data-filter="*" class="filter-active">Todos</li>
+                    <li data-filter=".filter-categoria1">Pop</li>
+                    <li data-filter=".filter-categoria2">Ninguno</li>
+                    <!-- Agrega más categorías si es necesario -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="row portfolio-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item filter-categoria1">
+                    <img src="@item.Imagen" class="img-fluid" alt="Imagen del producto">
+                    <div class="portfolio-info">
+                        <h4>@item.Nombre</h4>
+                        <p>Precio: $@item.Precio</p>
+                        <!-- Enlace para mostrar solo la imagen en un lightbox -->
+                        <a href="@item.Imagen" class="portfolio-lightbox preview-link" title="@item.Nombre"><i class="bx bx-show"></i></a>
+                        <!-- Enlace para ver todos los detalles del producto -->
+                        <a asp-action="Details" asp-controller="Tienda" asp-route-Id="@item.IdProducto" class="details-link" title="Ver detalles"><i class="bx bx-plus"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>

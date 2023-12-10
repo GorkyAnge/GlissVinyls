@@ -1,0 +1,33 @@
+﻿@model Carrito
+@{
+    ViewData["Title"] = "Tienda Vinilos";
+    Layout = "_LayoutUsuario";
+}
+<section id="general" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Carrito de compras</h2>
+            <p>Administra tus vinilos.</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad</th>
+                    <!-- Otros campos relevantes -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProductosEnCarrito)
+                {
+                    <tr>
+                        @* <td>@item.Producto.Nombre</td>
+                        <td>@item.Cantidad</td> *@
+                        <!-- Otros campos relevantes -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
