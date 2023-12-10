@@ -1,0 +1,41 @@
+﻿@model List<Resena>
+@{
+    ViewData["Title"] = "Reseñas de este Vinilo";
+    Layout = "_LayoutAdmin"; 
+}
+<section id="general" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Reseñas</h2>
+            <p style="margin-bottom: 20px;">En esta página se muestran los comentarios de los usuarios acerca del vinilo.</p>
+        </div>
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#ID Reseña</th hidden>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Reseña</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdResena</td>
+                                <td>@item.Usuario</td>
+                                <td>@item.Texto</td>
+                                <td>
+                                    <a type="button" asp-action="Delete" asp-route-Id="@item.IdResena" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"> Borrar</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+    </div>
+
+</section>

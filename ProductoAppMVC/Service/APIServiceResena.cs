@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ProductoAppMVC.Models;
+using System.Net;
 using System.Text;
 
 namespace ProductoAppMVC.Service
@@ -18,6 +19,16 @@ namespace ProductoAppMVC.Service
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }
 
+
+        public async Task<bool> DeleteResena(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"/api/Resena/{id}");
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return true;
+            }
+            return false;
+        }
         public async Task<Resena> GetProducto(int id)
         {
             var response = await _httpClient.GetAsync($"/api/Resena/{id}");
@@ -29,7 +40,18 @@ namespace ProductoAppMVC.Service
             }
             return new Resena();
         }
+        public async Task<List<Resena>> GetListResenas()
+        {
+            var response = await _httpClient.GetAsync("/api/Resena");
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                List<Resena> productos = JsonConvert.DeserializeObject<List<Resena>>(json_response);
+                return productos;
+            }
+            return new List<Resena>();
 
+        }
         public async Task<List<Resena>> GetResenas(int ProductoId)
         {
             var response = await _httpClient.GetAsync($"Resena/{ProductoId}");

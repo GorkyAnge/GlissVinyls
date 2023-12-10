@@ -49,14 +49,15 @@
                         Añadir al Carrito
                     </button>
 
+                  @*   Comprobar que se pasan los datos
                     @ViewBag.IdUsuario
                     @ViewBag.IdProducto
-                    @ViewBag.Nombre
+                    @ViewBag.Nombre *@
 
                 </div>
             </div>
 
-            <a asp-action="Index" asp-route-Id="@ViewBag.IdProducto" asp-route-IdUsuario="@ViewBag.IdUsuario" asp-route-Nombre="@ViewBag.Nombre" asp-controller="Resena" class="btn btn-outline-warning">Ver Reseñas de este vinilo</a>
+            <a asp-action="Index" asp-route-IdProducto="@ViewBag.IdProducto" asp-route-IdUsuario="@ViewBag.IdUsuario" asp-route-Nombre="@ViewBag.Nombre" asp-controller="Resena" class="btn btn-outline-warning">Ver Reseñas de este vinilo</a>
 
         </div>
 

@@ -7,5 +7,8 @@ namespace ProductoAppMVC.Service
         public Task<Resena> GetProducto(int Id);
         public Task<Resena> PostResena(Resena resena);
         public Task<List<Resena>> GetResenas(int id);
+        public Task<List<Resena>> GetListResenas();
+
+        public Task<Boolean> DeleteResena(int IdResena);
     }
 }
