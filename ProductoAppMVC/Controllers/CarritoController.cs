@@ -37,6 +37,7 @@ public class CarritoController : Controller
     public async Task<IActionResult> Index(int IdUsuario)
     {
         SetIdUsuario(IdUsuario);
+        ViewBag.IdUsuario = IdUsuario;
         List<ProductoEnCarrito> productosEnCarrito = await _productoEnCarritoService.ObtenerProductosEnCarrito(IdUsuario);
         return View(productosEnCarrito);
     }
@@ -49,13 +50,6 @@ public class CarritoController : Controller
         return RedirectToAction("Index", new { IdUsuario });
     }
 
-    // Acción para eliminar un producto del carrito
-    //public async Task<IActionResult> EliminarDelCarrito(int idProductoEnCarrito)
-    //{
-    //    await _productoEnCarritoService.EliminarProductoEnCarrito(idProductoEnCarrito);
-    //    return RedirectToAction("Index","Tienda"); // Cambia el idUsuario según tu lógica de autenticación/usuario
-    //}
-
     public async Task<IActionResult> EliminarDelCarrito(int IdProductoEnCarrito)
     {
         Boolean producto2 = await _productoEnCarritoService.EliminarProductoEnCarrito(IdProductoEnCarrito);
@@ -66,10 +60,14 @@ public class CarritoController : Controller
         return RedirectToAction("Index", new { IdUsuario = GetIdUsuario() });
     }
 
+    public async Task<IActionResult> ComprarCarrito(int IdUsuario)
+    {
+        Boolean producto2 = await _productoEnCarritoService.EliminarProductosEnCarritoPorUsuario(IdUsuario);
+        if (producto2 != false)
+        {
+            return RedirectToAction("Index", new { IdUsuario = GetIdUsuario() });
+        }
+        return RedirectToAction("Index", new { IdUsuario = GetIdUsuario() });
+    }
 
-
-    // Puedes agregar más acciones según sea necesario.
-
-    // Ejemplo de cómo podrías estructurar la vista (View) para mostrar los productos en el carrito.
-    // En este caso, asumimos que hay una vista llamada "VerCarrito.cshtml" en la carpeta "Views/Carrito".
 }

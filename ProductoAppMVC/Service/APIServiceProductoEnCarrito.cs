@@ -17,7 +17,7 @@ namespace ProductoAppMVC.Service
 
             _baseUrl = builder.GetSection("ApiSettings: BaseUrl").Value;
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://apiproductos20231127081048.azurewebsites.net/");
+            _httpClient.BaseAddress = new Uri("https://apiproductos20231211072423.azurewebsites.net/");
         }
 
         public async Task<ProductoEnCarrito> ObtenerProductoEnCarrito(int IdProductoEnCarrito)
@@ -74,6 +74,20 @@ namespace ProductoAppMVC.Service
 
             return false;
         }
+
+        public async Task<Boolean> EliminarProductosEnCarritoPorUsuario(int IdUsuario)
+        {
+            var response = await _httpClient.DeleteAsync($"api/ProductoEnCarrito/EliminarProductosEnCarritoPorUsuario/{IdUsuario}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+
+            return false;
+        }
+
 
 
     }

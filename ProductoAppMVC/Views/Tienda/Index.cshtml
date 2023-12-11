@@ -40,14 +40,17 @@
                     <div class="portfolio-info">
                         <h4>@item.Nombre</h4>
                         <p>Precio: $@item.Precio</p>
-                        <!-- Enlace para mostrar solo la imagen en un lightbox -->
                         <a href="@item.Imagen" class="portfolio-lightbox preview-link" title="@item.Nombre"><i class="bx bxs-image"></i></a>
                         <!-- Enlace para ver todos los detalles del producto -->
                         <a asp-action="Details" asp-controller="Tienda" asp-route-Id="@item.IdProducto" class="details-link" title="Ver detalles"><i class="bx bx-show"></i></a>
+                        <!-- Enlace para añadir al carrito -->
+                       @*  <a asp-action="AgregarAlCarrito" asp-controller="Carrito" asp-route-IdProducto="@item.IdProducto" asp-route-IdUsuario="@ViewBag.IdUsuario" class="add-to-cart-link" title="Añadir al Carrito"><i class="bx bxs-cart-add"></i></a> *@
+
                     </div>
                 </div>
             }
         </div>
+
 
     </div>
 </section>

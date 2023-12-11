@@ -1,0 +1,46 @@
+﻿@model List<Usuario>
+@{
+    ViewData["Title"] = "Lista de Productos";
+    Layout = "_LayoutAdmin";
+}
+
+<section id="resenas" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Buscar Compras por Usuario</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <label for="productoCombo">Seleccionar Usuario:</label>
+                <select id="productoCombo" class="form-control">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.IdUsuario">@item.Nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-lg-6">
+                <a id="verResenasBtn" class="btn btn-outline-warning">Ver Compras de este usuario</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('verResenasBtn').addEventListener('click', function () {
+        // Obtener el valor seleccionado del combobox
+        var selectedUserId = document.getElementById('productoCombo').value;
+
+        // Construir la URL con el parámetro IdUsuario
+        var url = '/Compras/ComprasPorUsuario?IdUsuario=' + selectedUserId;
+
+        // Redirigir a la página de ComprasPorUsuario con el parámetro
+        window.location.href = url;
+    });
+</script>
+
+

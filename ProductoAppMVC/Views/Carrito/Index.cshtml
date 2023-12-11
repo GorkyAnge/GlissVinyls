@@ -37,11 +37,39 @@
                         </tr>
                     }
                 </tbody>
+
             </table>
+            <a type="button" asp-action="ComprarCarrito" asp-route-IdUsuario="@ViewBag.IdUsuario" class="btn btn-outline-success" onclick="MostrarAlerta()">
+                <i class="fa-solid fa-trash">COMPRAR!</i>
+            </a>
         }
         else
         {
             <p>El carrito está vacío.</p>
+            <a class="btn btn-primary" onclick="MostrarAlertaCompra()">Comprar</a>
         }
     </div>
 </section>
+
+<script>
+    function MostrarAlerta() {
+        Swal.fire({
+            title: "¡Felicidades!",
+            text: "Tu compra se ha realizado con éxito",
+            icon: "success",
+            width: 600,
+            padding: "3em",
+            customClass: {
+                color: "red",  // Personaliza el color según tus necesidades
+                background: "yellow",  // Personaliza el fondo según tus necesidades
+            },
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    url("/images/nyan-cat.gif")
+                    left top
+                    no-repeat
+                `
+        });
+    }
+
+</script>

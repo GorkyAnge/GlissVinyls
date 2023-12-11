@@ -14,7 +14,7 @@ namespace ProductoAppMVC.Service
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json").Build();
 
-            _baseUrl = "http://localhost:5240/";
+            _baseUrl = "https://apiproductos20231211072423.azurewebsites.net/";
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }

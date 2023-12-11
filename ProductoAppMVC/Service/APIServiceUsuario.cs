@@ -16,7 +16,7 @@ namespace ProductoAppMVC.Service
 
 			_baseUrl = builder.GetSection("ApiSettings: BaseUrl").Value;
 			_httpClient = new HttpClient();
-			_httpClient.BaseAddress = new Uri("https://apiproductos20231127081048.azurewebsites.net/");
+			_httpClient.BaseAddress = new Uri("https://apiproductos20231211072423.azurewebsites.net/");
 		}
 
         public async Task<bool> DeleteUsuario(int IdUsuario)

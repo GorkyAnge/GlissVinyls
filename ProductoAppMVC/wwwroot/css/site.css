@@ -894,7 +894,8 @@ section {
         }
 
         .portfolio .portfolio-item .portfolio-info .preview-link,
-        .portfolio .portfolio-item .portfolio-info .details-link {
+        .portfolio .portfolio-item .portfolio-info .details-link,
+        .portfolio .portfolio-item .portfolio-info .add-to-cart-link {
             position: absolute;
             right: 50px;
             font-size: 24px;
@@ -903,14 +904,25 @@ section {
             transition: ease-in-out 0.3s;
         }
 
+        .portfolio .portfolio-item .portfolio-info .details-link {
+            right: 15px; /* Ajusta según sea necesario */
+        }
+
+        .portfolio .portfolio-item .portfolio-info .add-to-cart-link {
+            right: 15px; /* Ajusta según sea necesario */
+        }
+
             .portfolio .portfolio-item .portfolio-info .preview-link:hover,
-            .portfolio .portfolio-item .portfolio-info .details-link:hover {
+            .portfolio .portfolio-item .portfolio-info .details-link:hover,
+            .portfolio .portfolio-item .portfolio-info .add-to-cart-link:hover {
                 color: #fff;
             }
+
 
         .portfolio .portfolio-item .portfolio-info .details-link {
             right: 15px;
         }
+
 
     .portfolio .portfolio-item:hover img {
         top: -30px;
