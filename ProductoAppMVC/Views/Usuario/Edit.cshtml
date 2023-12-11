@@ -30,15 +30,19 @@
                 <input asp-for="Correo" class="form-control">
             </div>
             <div class="mb-3" >
-                <input type="password" asp-for="Contrasenia" class="form-control"hidden>
+                <input type="password" asp-for="Contrasenia" class="form-control" hidden>
             </div> 
+@*             <div class="mb-3">
+                <label class="form-label">Rol</label>
+                <input asp-for="Rol" class="form-control">
+            </div> *@
             <div class="mb-3">
                 <label class="form-label">Rol</label>
                 <select asp-for="Rol" class="form-select">
                     <option value="usuario">Usuario</option>
                     <option value="admin">Admin</option>
                 </select>
-            </div>
+            </div> 
             <div class="row col-6">
                 <div class="col-6 col-md-6">
                     <button asp-action="Edit" type="submit" class="btn btn-warning" style="color: white;">Editar</button>
