@@ -45,9 +45,12 @@
 
                     </p>
 
-                    <button type="button" class="btn btn-warning" style="color: white;" onclick="location.href='@Url.Action("AgregarAlCarrito", "Tienda", new { idUsuario = ViewData["IdUsuario"], idProducto = ViewData["IdProducto"], nombre = ViewData["Nombre"] })'">
+                   
+
+                    <a href="@Url.Action("AgregarAlCarrito", "Carrito", new { IdUsuario = ViewData["IdUsuario"], IdProducto = ViewData["IdProducto"] })" class="btn btn-warning" style="color: white;">
                         Añadir al Carrito
-                    </button>
+                    </a>
+
 
                   @*   Comprobar que se pasan los datos
                     @ViewBag.IdUsuario

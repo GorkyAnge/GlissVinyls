@@ -11,7 +11,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAPIServiceProducto, APIServiceProducto>();
 builder.Services.AddScoped<IAPIServiceProductoEnCarrito, APIServiceProductoEnCarrito>();
 builder.Services.AddScoped<IAPIServiceUsuario, APIServiceUsuario>();
-builder.Services.AddScoped<IAPIServiceCarrito, APIServiceCarrito>();
 builder.Services.AddScoped<IAPIServiceResena, APIServiceResena>();
 builder.Services.AddHttpContextAccessor();
 

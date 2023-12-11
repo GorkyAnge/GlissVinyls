@@ -1,33 +1,47 @@
-﻿@model Carrito
+﻿@model List<ProductoEnCarrito>
 @{
     ViewData["Title"] = "Tienda Vinilos";
     Layout = "_LayoutUsuario";
 }
+
 <section id="general" class="contact">
     <div class="container">
         <div class="section-title">
             <h2>Carrito de compras</h2>
-            <p>Administra tus vinilos.</p>
+            <p>Administra tu lista de vinilos.</p>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre del Producto</th>
-                    <th>Cantidad</th>
-                    <!-- Otros campos relevantes -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.ProductosEnCarrito)
-                {
+        @if (Model.Any())
+        {
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        @* <td>@item.Producto.Nombre</td>
-                        <td>@item.Cantidad</td> *@
+                        <th>#ID del Producto</th>
+                        <th>Cantidad</th>
+                        <th>Eliminar</th>
                         <!-- Otros campos relevantes -->
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdProducto</td>
+                            <td>@item.Cantidad</td>
+                            <td>
+                                <a type="button" asp-action="EliminarDelCarrito" asp-route-IdProductoEnCarrito="@item.IdProductoEnCarrito" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"> Borrar</i>
+                                </a>
+                            </td>
+                            <!-- Otros campos relevantes -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>El carrito está vacío.</p>
+        }
     </div>
 </section>

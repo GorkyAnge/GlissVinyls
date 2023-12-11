@@ -10,7 +10,7 @@ namespace ProductoAppMVC.Controllers
         private readonly IAPIServiceProducto _apiService;
         private readonly IAPIServiceProductoEnCarrito _apiServiceProductoEnCarrito;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IAPIServiceCarrito _apiServiceCarrito;
+
 
         private int _idUsuario;
         private string _nombre;

@@ -4,21 +4,16 @@ namespace ProductoAppMVC.Models
 {
 	public class ProductoEnCarrito
 	{
-		[Key]
-		public int IdProductoEnCarrito { get; set; }
+        [Key]
+        public int IdProductoEnCarrito { get; set; }
 
-		[Required]
-		public int IdUsuario { get; set; }
+        [Required]
+        public int IdUsuario { get; set; }
 
-		[Required]
-		public int IdProducto { get; set; }
+        public int IdProducto { get; set; }
 
-		public string NombreProducto { get; set; }
-
-		[Required]
-		public int Cantidad { get; set; }
+        public int Cantidad { get; set; }
 
 
-
-	}
+    }
 }

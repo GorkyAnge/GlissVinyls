@@ -20,11 +20,22 @@ namespace ProductoAppMVC.Service
             _httpClient.BaseAddress = new Uri("https://apiproductos20231127081048.azurewebsites.net/");
         }
 
-        public async Task<List<ProductoEnCarrito>> ObtenerProductosEnCarritoAsync(int idUsuario)
+        public async Task<ProductoEnCarrito> ObtenerProductoEnCarrito(int IdProductoEnCarrito)
         {
-            var endpoint = $"/api/ProductoEnCarrito/{idUsuario}";
+            var response = await _httpClient.GetAsync($"api/ProductoEnCarrito/IdProductoEnCarrito/{IdProductoEnCarrito}");
 
-            var response = await _httpClient.GetAsync(_baseUrl + endpoint);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProductoEnCarrito>(content);
+            }
+
+            throw new Exception($"Error al obtener el producto en el carrito. StatusCode: {response.StatusCode}");
+        }
+
+        public async Task<List<ProductoEnCarrito>> ObtenerProductosEnCarrito(int IdUsuario)
+        {
+            var response = await _httpClient.GetAsync($"api/ProductoEnCarrito/ObtenerProductosEnCarrito/IdUsuario/{IdUsuario}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -32,47 +43,38 @@ namespace ProductoAppMVC.Service
                 return JsonConvert.DeserializeObject<List<ProductoEnCarrito>>(content);
             }
 
-            // Manejar el error de acuerdo a tus necesidades
-            return new List<ProductoEnCarrito>();
+            throw new Exception($"Error al obtener los productos en el carrito. StatusCode: {response.StatusCode}");
         }
 
-        public async Task AgregarProductoAlCarritoAsync(int idUsuario, int idProducto)
+        public async Task<ProductoEnCarrito> AgregarAlCarrito(int IdUsuario, int IdProducto)
         {
-            var endpoint = $"/api/ProductoEnCarrito/{idUsuario}/AgregarProducto";
+            var response = await _httpClient.PostAsync($"api/ProductoEnCarrito/AgregarAlCarrito/{IdUsuario}/{IdProducto}", null);
 
-            // Assuming you have some data to send in the request body
-            var dataToSend = new
+            if (response.IsSuccessStatusCode)
             {
-                // ... populate your data properties here
-            };
-
-            // Serialize the data to JSON
-            var jsonPayload = JsonConvert.SerializeObject(dataToSend);
-            var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync(_baseUrl + endpoint, content);
-           
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                // Log or inspect the response content for more details
-                Console.WriteLine($"Response Content: {responseContent}");
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProductoEnCarrito>(content);
             }
 
+            throw new Exception($"Error al agregar el producto al carrito. StatusCode: {response.StatusCode}");
 
-            response.EnsureSuccessStatusCode();
+
         }
 
 
-        public async Task EliminarProductoDelCarritoAsync(int idUsuario, int idProducto)
+        public async Task<bool> EliminarProductoEnCarrito(int IdProductoEnCarrito)
         {
-            var endpoint = $"/api/ProductoEnCarrito/{idUsuario}/EliminarProducto/{idProducto}";
+            var response = await _httpClient.DeleteAsync($"api/ProductoEnCarrito/EliminarProductoEnCarrito/{IdProductoEnCarrito}");
 
-            var response = await _httpClient.DeleteAsync(_baseUrl + endpoint);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return true;
+            }
 
-            response.EnsureSuccessStatusCode();
+            return false;
         }
+
 
     }
 }

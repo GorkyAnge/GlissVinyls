@@ -4,8 +4,10 @@ namespace ProductoAppMVC.Service
 {
     public interface IAPIServiceProductoEnCarrito
     {
-        public Task<List<ProductoEnCarrito>> ObtenerProductosEnCarritoAsync(int idUsuario);
-        public Task AgregarProductoAlCarritoAsync(int idUsuario, int idProducto);
-        public Task EliminarProductoDelCarritoAsync(int idUsuario, int idProducto);
+        Task<ProductoEnCarrito> ObtenerProductoEnCarrito(int IdProductoEnCarrito);
+        Task<List<ProductoEnCarrito>> ObtenerProductosEnCarrito(int IdUsuario);
+        Task<ProductoEnCarrito> AgregarAlCarrito(int IdUsuario, int IdProducto);
+        Task<Boolean> EliminarProductoEnCarrito(int IdProductoEnCarrito);
+
     }
 }
