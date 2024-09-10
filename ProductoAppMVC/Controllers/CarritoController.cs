@@ -1,17 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 using ProductoAppMVC.Models;
 
 
 public class CarritoController : Controller
 {
-    private readonly IAPIServiceProductoEnCarrito _productoEnCarritoService;
+    private readonly IAPIService _productoEnCarritoService;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private int _idUsuario;
 
 
-    public CarritoController(IAPIServiceProductoEnCarrito productoEnCarritoService, IHttpContextAccessor httpContextAccessor)
+    public CarritoController(IAPIService productoEnCarritoService, IHttpContextAccessor httpContextAccessor)
     {
         _productoEnCarritoService = productoEnCarritoService;
         _httpContextAccessor = httpContextAccessor;

@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 namespace ProductoAppMVC.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly IAPIServiceUsuario _apiService;
+        private readonly IAPIService _apiService;
 
 
-        public UsuarioController(IAPIServiceUsuario apiService)
+        public UsuarioController(IAPIService apiService)
         {
             _apiService = apiService;
         }

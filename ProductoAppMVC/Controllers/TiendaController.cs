@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 namespace ProductoAppMVC.Controllers
 {
     public class TiendaController : Controller
     {
-        private readonly IAPIServiceProducto _apiService;
-        private readonly IAPIServiceProductoEnCarrito _apiServiceProductoEnCarrito;
+        private readonly IAPIService _apiService;
+        private readonly IAPIService _apiServiceProductoEnCarrito;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
@@ -19,7 +20,7 @@ namespace ProductoAppMVC.Controllers
 
 
         // Constructor del controlador
-        public TiendaController(IAPIServiceProducto apiService, IAPIServiceProductoEnCarrito apiServiceProductoEnCarrito, IHttpContextAccessor httpContextAccessor)
+        public TiendaController(IAPIService apiService, IAPIService apiServiceProductoEnCarrito, IHttpContextAccessor httpContextAccessor)
         {
 
             _apiService = apiService;

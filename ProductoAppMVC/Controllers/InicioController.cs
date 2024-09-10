@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 using System.Security.Claims;
 
 namespace ProductoAppMVC.Controllers
 {
     public class InicioController : Controller
     {
-		private readonly IAPIServiceUsuario _apiServiceUsuario;
+		private readonly IAPIService _apiServiceUsuario;
 
 
-		public InicioController(IAPIServiceUsuario apiServiceUsuario)
+		public InicioController(IAPIService apiServiceUsuario)
 		{
 			_apiServiceUsuario = apiServiceUsuario;
 		}

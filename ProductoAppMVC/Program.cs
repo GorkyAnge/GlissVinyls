@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IAPIServiceProducto, APIServiceProducto>();
-builder.Services.AddScoped<IAPIServiceProductoEnCarrito, APIServiceProductoEnCarrito>();
-builder.Services.AddScoped<IAPIServiceUsuario, APIServiceUsuario>();
-builder.Services.AddScoped<IAPIServiceResena, APIServiceResena>();
+builder.Services.AddScoped<IAPIService, APIService>();
+
 builder.Services.AddHttpContextAccessor();
 
 // Add authentication services

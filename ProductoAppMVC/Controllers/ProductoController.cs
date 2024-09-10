@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 using System.Collections.ObjectModel;
 
 namespace ProductoAppMVC.Controllers
@@ -8,10 +9,10 @@ namespace ProductoAppMVC.Controllers
     public class ProductoController : Controller
     {
         // Configuración para realizar solicitudes al API
-        private readonly IAPIServiceProducto _apiService;
+        private readonly IAPIService _apiService;
 
         // Constructor del controlador
-        public ProductoController(IAPIServiceProducto apiService)
+        public ProductoController(IAPIService apiService)
         {
             _apiService = apiService;
         }

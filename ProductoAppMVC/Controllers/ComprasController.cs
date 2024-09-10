@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 namespace ProductoAppMVC.Controllers
 {
     public class ComprasController : Controller
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IAPIServiceProductoEnCarrito _apiProductoEnCarrito;
-        private readonly IAPIServiceUsuario _apiUsuario;
+        private readonly IAPIService _apiProductoEnCarrito;
+        private readonly IAPIService _apiUsuario;
 
-        public ComprasController(IAPIServiceProductoEnCarrito apiProductoEnCarrito, IHttpContextAccessor httpContextAccessor, IAPIServiceUsuario apiUsuario)
+        public ComprasController(IAPIService apiProductoEnCarrito, IHttpContextAccessor httpContextAccessor, IAPIService apiUsuario)
         {
             _httpContextAccessor = httpContextAccessor;
             _apiProductoEnCarrito = apiProductoEnCarrito;

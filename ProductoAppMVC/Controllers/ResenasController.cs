@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 namespace ProductoAppMVC.Controllers
 {
     public class ResenasController : Controller
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IAPIServiceResena _apiResena;
-        private readonly IAPIServiceProducto _apiProducto;
+        private readonly IAPIService _apiResena;
+        private readonly IAPIService _apiProducto;
 
-        public ResenasController(IAPIServiceResena apiResena, IHttpContextAccessor httpContextAccessor, IAPIServiceProducto apiProducto)
+        public ResenasController(IAPIService apiResena, IHttpContextAccessor httpContextAccessor, IAPIService apiProducto)
         {
             _httpContextAccessor = httpContextAccessor;
             _apiResena = apiResena;

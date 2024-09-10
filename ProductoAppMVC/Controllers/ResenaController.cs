@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductoAppMVC.Models;
 using ProductoAppMVC.Service;
+using ProductoAppMVC.Interfaces;
 
 namespace ProductoAppMVC.Controllers
 {
     public class ResenaController : Controller
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IAPIServiceResena _apiResena;
+        private readonly IAPIService _apiResena;
 
         private int _idUsuario;
         private string _nombre;
@@ -16,7 +17,7 @@ namespace ProductoAppMVC.Controllers
 
 
         // Constructor del controlador
-        public ResenaController(IAPIServiceResena apiResena, IHttpContextAccessor httpContextAccessor)
+        public ResenaController(IAPIService apiResena, IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
             _apiResena = apiResena;
@@ -110,7 +111,7 @@ namespace ProductoAppMVC.Controllers
 
         public async Task<IActionResult> Comment(int Id)
         {
-            Resena resena = await _apiResena.GetProducto(Id);
+            Resena resena = await _apiResena.GetResena(Id);
 
             if (resena != null)
             {
